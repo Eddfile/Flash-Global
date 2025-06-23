@@ -16,15 +16,15 @@ toggleBtn.addEventListener('click', () => {
 updateButton();
 
 const cardsData = [
-  {
-    title: "Accident rutier pe DN1",
-    description: "Coliziune între două autoturisme, se circulă cu dificultate.",
-    imageUrl: "https://example.com/image1.jpg",
-    sourceLink: "https://site-exemplu.ro/stire1",
+{
+    title: "Bolojan Premier",
+    description: "Guvernul Bolojan a fost votat în Parlament. Noul executiv a trecut cu 301 voturi în favoarea sa și 9 voturi „împotrivă”. Liderii partidelor care îl susțin au semnat de dimineață protocolul coaliției de guvernare.",
+    imageUrl: "https://image.stirileprotv.ro/media/images/800x450/Jun2025/41145478.jpg",
+    sourceLink: "https://stirileprotv.ro/stiri/actualitate/guvernul-bolojan-votat-parlament.html",
     tag: "Național",
     flagUrl: "https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Romania.svg",
     likes: 10,
-    dislikes: 2
+    dislikes: 0
   },
   {
     title: "Blocaj pe autostradă",

@@ -1,128 +1,69 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #f0f0f0;
-  text-align: center;
-  padding: 50px 20px;
-  transition: background-color 0.3s, color 0.3s;
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+const toggleBtn = document.getElementById('toggle-dark');
+
+// La încărcare, setăm tema după clasa body (default dark)
+function updateButton() {
+  if (document.body.classList.contains('light-mode')) {
+    toggleBtn.textContent = '🌙';  // lumina = lună icon
+  } else {
+    toggleBtn.textContent = '☀️';  // întuneric = soare icon
+  }
 }
 
-body.light-mode {
-  background-color: #f4f4f4;
-  color: #222;
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('light-mode');
+  updateButton();
+});
+
+// Setăm butonul la încărcare
+updateButton();
+
+const cardsData = [
+  {
+    title: "Accident rutier pe DN1",
+    description: "Coliziune între două autoturisme, se circulă cu dificultate.",
+    imageUrl: "https://example.com/image1.jpg",
+    sourceLink: "https://site-exemplu.ro/stire1",
+    tag: "Național",
+    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Romania.svg"
+  },
+  {
+    title: "Blocaj pe autostradă",
+    description: "Un tir a derapat, traficul este deviat.",
+    imageUrl: "https://example.com/image2.jpg",
+    sourceLink: "https://site-exemplu.ro/stire2",
+    tag: "Internațional",
+    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
+  }
+  // Adaugă știri noi aici cu tag și steag
+];
+
+function renderCards(cards) {
+  const container = document.getElementById('cardsList');
+  container.innerHTML = '';
+
+  cards.forEach(card => {
+    const cardEl = document.createElement('div');
+    cardEl.className = 'card';
+    cardEl.style.position = 'relative';  // pentru etichetă
+
+    cardEl.innerHTML = `
+      <div class="label-tag">
+        <img src="${card.flagUrl}" alt="${card.tag} steag" />
+        <span>${card.tag}</span>
+      </div>
+      <img src="${card.imageUrl}" alt="Imagine știre" class="card-image" />
+      <div class="card-content">
+        <h3 class="card-title">${card.title}</h3>
+        <p class="card-description">${card.description}</p>
+      </div>
+      <div class="card-footer">
+        <a href="${card.sourceLink}" target="_blank" rel="noopener noreferrer">Vezi sursa</a>
+      </div>
+    `;
+    container.appendChild(cardEl);
+  });
 }
 
-.container {
-  background: #1e1e1e;
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  transition: background 0.3s;
-}
-
-body.light-mode .container {
-  background: white;
-  color: #000;
-}
-
-h1 {
-  font-size: 2rem;
-  margin-bottom: 30px;
-  user-select: none;
-}
-
-#toggle-dark {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  background: transparent;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  z-index: 1000;
-  color: inherit;
-}
-
-.cards-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 0;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px; /* colțuri mai ascuțite */
-  padding: 15px;
-  width: 100%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  backdrop-filter: blur(6px);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease;
-  cursor: pointer;
-  color: #f0f0f0;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
-
-.card-image {
-  width: 100%;
-  height: 180px;
-  border-radius: 4px;
-  object-fit: cover;
-  margin-bottom: 12px;
-}
-
-.card-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  text-align: center;
-}
-
-.card-description {
-  flex-grow: 1;
-  font-size: 1rem;
-  line-height: 1.4;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.card-footer a {
-  color: #61dafb;
-  text-decoration: none;
-  font-weight: 600;
-  text-align: center;
-  display: block;
-}
-
-.card-footer a:hover {
-  text-decoration: underline;
-}
-
-/* Tema luminoasă */
-body.light-mode .card {
-  background: #f9f9f9;
-  color: #222;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  backdrop-filter: none;
-}
-
-body.light-mode .card-footer a {
-  color: #0077cc;
-}
+document.addEventListener('DOMContentLoaded', () => {
+  renderCards(cardsData);
+});

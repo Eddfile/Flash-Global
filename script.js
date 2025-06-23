@@ -19,7 +19,7 @@ const cardsData = [
   {
     title: "Accident rutier pe DN1",
     description: "Coliziune între două autoturisme, se circulă cu dificultate.",
-    imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+    imageUrl: "https://example.com/image1.jpg",
     sourceLink: "https://site-exemplu.ro/stire1",
     tag: "Național",
     flagUrl: "https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Romania.svg",
@@ -29,30 +29,26 @@ const cardsData = [
   {
     title: "Blocaj pe autostradă",
     description: "Un tir a derapat, traficul este deviat.",
-    imageUrl: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80",
+    imageUrl: "https://example.com/image2.jpg",
     sourceLink: "https://site-exemplu.ro/stire2",
     tag: "Internațional",
     flagUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
-    likes: 59,
-    dislikes: 2
+    likes: 8,
+    dislikes: 0
   }
 ];
-
-// Păstrează votul utilizatorului pentru fiecare știre
-const userVotes = {}; // {index: 'like' | 'dislike' | null}
 
 function renderCards(cards) {
   const container = document.getElementById('cardsList');
   container.innerHTML = '';
 
-  cards.forEach((card, index) => {
+  cards.forEach((card, idx) => {
     const cardEl = document.createElement('div');
     cardEl.className = 'card';
-    cardEl.style.position = 'relative';
 
     cardEl.innerHTML = `
       <div class="label-tag">
-        <img src="${card.flagUrl}" alt="${card.tag} steag" class="flag-icon" />
+        <img src="${card.flagUrl}" alt="${card.tag} steag" />
         <span>${card.tag}</span>
       </div>
       <img src="${card.imageUrl}" alt="Imagine știre" class="card-image" />
@@ -61,92 +57,116 @@ function renderCards(cards) {
         <p class="card-description">${card.description}</p>
       </div>
       <div class="card-interaction">
-        <div class="interaction-row">
-          <div class="buttons">
-            <div class="button-with-count">
-              <button class="like-btn" data-index="${index}" title="Like">
-                <i class="fa-regular fa-thumbs-up"></i>
-              </button>
-              <span class="like-count">${card.likes || 0}</span>
-            </div>
-            <div class="button-with-count">
-              <button class="dislike-btn" data-index="${index}" title="Dislike">
-                <i class="fa-regular fa-thumbs-down"></i>
-              </button>
-              <span class="dislike-count">${card.dislikes || 0}</span>
-            </div>
-          </div>
+        <div class="button-with-count">
+          <button class="like-btn" data-index="${idx}" aria-label="Like">
+            <i class="fa-regular fa-thumbs-up"></i>
+          </button>
+          <span class="like-count">${card.likes}</span>
         </div>
+        <div class="button-with-count">
+          <button class="dislike-btn" data-index="${idx}" aria-label="Dislike">
+            <i class="fa-regular fa-thumbs-down"></i>
+          </button>
+          <span class="dislike-count">${card.dislikes}</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="${card.sourceLink}" target="_blank" rel="noopener">Vezi sursa</a>
       </div>
     `;
 
     container.appendChild(cardEl);
   });
 
-  document.querySelectorAll('.like-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const idx = button.dataset.index;
-      toggleVote(idx, 'like');
+  addInteractionListeners();
+}
+
+function addInteractionListeners() {
+  const likes = document.querySelectorAll('.like-btn');
+  const dislikes = document.querySelectorAll('.dislike-btn');
+
+  likes.forEach(btn => {
+    btn.addEventListener('click', () => {
+      handleVote(btn, 'like');
     });
   });
 
-  document.querySelectorAll('.dislike-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const idx = button.dataset.index;
-      toggleVote(idx, 'dislike');
+  dislikes.forEach(btn => {
+    btn.addEventListener('click', () => {
+      handleVote(btn, 'dislike');
     });
   });
 }
 
-function toggleVote(index, type) {
-  const card = cardsData[index];
-  const currentVote = userVotes[index]; 
+// Pentru a memora votul în localStorage să nu se piardă la refresh
+function handleVote(button, type) {
+  const idx = parseInt(button.dataset.index);
+  const otherType = type === 'like' ? 'dislike' : 'like';
+  const likeBtn = document.querySelector(`.like-btn[data-index="${idx}"]`);
+  const dislikeBtn = document.querySelector(`.dislike-btn[data-index="${idx}"]`);
 
-  if (currentVote === type) {
-    // Anulează votul dacă dai click pe același buton
-    userVotes[index] = null;
-    if(type === 'like') card.likes = (card.likes || 1) - 1;
-    else card.dislikes = (card.dislikes || 1) - 1;
+  // Folosim localStorage sub cheia "flashglobal_votes"
+  let votes = JSON.parse(localStorage.getItem('flashglobal_votes') || '{}');
+
+  // Dacă există vot curent
+  if (votes[idx] === type) {
+    // Scoatem votul (dezactivăm)
+    votes[idx] = null;
+    if (type === 'like') cardsData[idx].likes--;
+    else cardsData[idx].dislikes--;
   } else {
-    // Schimbă votul
-    if(currentVote === 'like') {
-      card.likes = (card.likes || 1) - 1;
-      card.dislikes = (card.dislikes || 0) + 1;
-    } else if(currentVote === 'dislike') {
-      card.dislikes = (card.dislikes || 1) - 1;
-      card.likes = (card.likes || 0) + 1;
-    } else {
-      // Vot nou
-      if(type === 'like') card.likes = (card.likes || 0) + 1;
-      else card.dislikes = (card.dislikes || 0) + 1;
+    // Dacă era votat cu celălalt, scădem acolo
+    if (votes[idx] === otherType) {
+      if (otherType === 'like') cardsData[idx].likes--;
+      else cardsData[idx].dislikes--;
     }
-    userVotes[index] = type;
+    // Punem noul vot
+    votes[idx] = type;
+    if (type === 'like') cardsData[idx].likes++;
+    else cardsData[idx].dislikes++;
   }
 
-  updateCardVotes(index);
+  localStorage.setItem('flashglobal_votes', JSON.stringify(votes));
+  renderCards(cardsData);
 }
 
-function updateCardVotes(index) {
-  const cardEls = document.querySelectorAll('.card');
-  const cardEl = cardEls[index];
-  const card = cardsData[index];
-
-  const likeBtn = cardEl.querySelector('.like-btn');
-  const dislikeBtn = cardEl.querySelector('.dislike-btn');
-  const likeCount = cardEl.querySelector('.like-count');
-  const dislikeCount = cardEl.querySelector('.dislike-count');
-
-  likeCount.textContent = card.likes || 0;
-  dislikeCount.textContent = card.dislikes || 0;
-
-  likeBtn.classList.remove('active-like');
-  dislikeBtn.classList.remove('active-dislike');
-
-  if (userVotes[index] === 'like') {
-    likeBtn.classList.add('active-like');
-  } else if (userVotes[index] === 'dislike') {
-    dislikeBtn.classList.add('active-dislike');
+// La încărcare, restaurăm voturile
+function restoreVotes() {
+  let votes = JSON.parse(localStorage.getItem('flashglobal_votes') || '{}');
+  for (const idx in votes) {
+    if (votes[idx] === 'like') {
+      cardsData[idx].likes++;
+    } else if (votes[idx] === 'dislike') {
+      cardsData[idx].dislikes++;
+    }
   }
 }
 
-renderCards(cardsData);
+// Prima încărcare
+function initialize() {
+  // Resetează voturile ca să nu dubleze la fiecare refresh
+  let votes = JSON.parse(localStorage.getItem('flashglobal_votes') || '{}');
+  // Reset counts based on votes from localStorage
+  cardsData.forEach((card, i) => {
+    // Reset counts (hardcoded init)
+    if (i === 0) {
+      card.likes = 10;
+      card.dislikes = 2;
+    } else if (i === 1) {
+      card.likes = 8;
+      card.dislikes = 0;
+    }
+  });
+
+  for (const idx in votes) {
+    if (votes[idx] === 'like') {
+      cardsData[idx].likes++;
+    } else if (votes[idx] === 'dislike') {
+      cardsData[idx].dislikes++;
+    }
+  }
+
+  renderCards(cardsData);
+}
+
+initialize();

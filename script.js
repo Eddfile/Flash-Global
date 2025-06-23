@@ -18,6 +18,15 @@ updateButton();
 
 const cardsData = [
   {
+  title: "Bolojan Premier",
+  description: "Guvernul Bolojan a fost votat în Parlament. Noul executiv a trecut cu 301 voturi în favoarea sa și 9 voturi „împotrivă”. Liderii partidelor care îl susțin au semnat de dimineață protocolul coaliției de guvernare. ",
+  imageUrl: "https://image.stirileprotv.ro/media/images/800x450/Jun2025/62554578.jpg",
+  sourceLink: "https://stirileprotv.ro/stiri/politic/guvernul-bolojan-la-vot-in-parlament-ministrii-propusi-avizati-pe-banda-rulanta-in-comisii.html",
+  tag: "Național", // sau "Internațional"
+  flagUrl: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALgAAAB6CAMAAAA7zWlKAAAAMFBMVEUAK3/OESb80Ra9pEX/1gz+1hXtoBzNACYAIoESM4POGCf4zxwAK4W9o0n+0xT51BstSlKgAAAAiElEQVR4nO3OyRGAIAAEMPAAb/vv1h7Yn5NUkFIC27xMw9bWayB5i4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi/8wvgeu+zmHva0egQ80xWn5v54i2wAAAABJRU5ErkJggg==" // exemplu: România, UE sau orice alt steag
+}
+
+  {
     title: "Pandemia COVID-19 încă afectează lumea",
     description: "Varianta Delta provoacă creșteri de cazuri în mai multe țări.",
     imageUrl: "https://cdn.britannica.com/94/1894-050-2C9E3B1B/Coronavirus-microscope-virus-COVID-19.jpg",

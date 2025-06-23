@@ -29,15 +29,16 @@ const cardsData = [
     ]
   },
   {
-    title: "Blocaj pe autostradă",
-    description: "Un tir a derapat, traficul este deviat.",
-    imageUrl: "https://example.com/image2.jpg",
+    title: "Conflictul Israel-Iran explodează: Viitorul Orientului Mijlociu în pericol!",
+    description: "În ultimele zile, Statele Unite au lansat atacuri militare asupra a trei situri nucleare iraniene, vizând oprirea programului nuclear al Iranului. Israel a susținut aceste operațiuni prin atacuri aeriene țintite, crescând tensiunile regionale. Rusia a avertizat asupra riscului unui conflict extins, iar Iranul a promis represalii dure.
+",
+    imageUrl: "https://i.ytimg.com/vi/Hwy9PXsJnjE/hqdefault.jpg",
     tag: "Internațional",
-    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
+    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Israel.svg",
     sourceLinks: [
-      "https://site-exemplu.ro/stire2",
-      "https://example.org/alt-source",
-      "https://anotherexample.net/source"
+      "https://www.thetimes.com/world/middle-east/israel-iran/article/evin-prison-iran-israel-war-us-latest-news-mhnbjpr70?region=global",
+      "https://www.reuters.com/world/middle-east/israel-signals-iran-campaign-can-end-soon-much-hinges-tehran-2025-06-23/",
+      "https://stirileprotv.ro/stiri/international/iranul-si-israelul-lanseaza-noi-atacuri-dupa-ce-teheranul-a-exclus-negocierile-pe-subiectul-nuclear.html"
     ]
   }
 ];

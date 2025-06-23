@@ -63,3 +63,16 @@ button {
 button:hover {
   background: #005fa3;
 }
+#toggle-dark {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 1.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit; /* ia culoarea textului din body */
+  user-select: none;
+  transition: color 0.3s;
+  z-index: 1000;
+}

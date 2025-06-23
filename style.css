@@ -2,9 +2,14 @@ body {
   font-family: Arial, sans-serif;
   background-color: #121212;
   color: #f0f0f0;
-  margin: 0;
-  padding: 40px 20px;
+  text-align: center;
+  padding: 50px 20px;
   transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 body.light-mode {
@@ -13,86 +18,25 @@ body.light-mode {
 }
 
 .container {
-  max-width: 900px;
-  margin: auto;
   background: #1e1e1e;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
   transition: background 0.3s;
 }
 
 body.light-mode .container {
-  background: #fff;
+  background: white;
   color: #000;
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 5px;
-}
-
-.subtitle {
-  text-align: center;
+  font-size: 2rem;
   margin-bottom: 30px;
-  font-weight: 400;
-  font-size: 1.1rem;
-  opacity: 0.75;
-}
-
-.cards-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  backdrop-filter: blur(6px);
-  display: flex;
-  flex-direction: column;
-  transition: background-color 0.3s;
-  cursor: pointer;
-}
-
-body.light-mode .card {
-  background: #fafafa;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.card-image {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 12px;
-}
-
-.card-title {
-  font-size: 1.2rem;
-  margin: 0 0 8px 0;
-  font-weight: 700;
-}
-
-.card-description {
-  flex-grow: 1;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  margin-bottom: 12px;
-}
-
-.card-footer a {
-  text-decoration: none;
-  color: #00aaff;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.card-footer a:hover {
-  text-decoration: underline;
+  user-select: none;
 }
 
 #toggle-dark {
@@ -103,6 +47,82 @@ body.light-mode .card {
   border: none;
   font-size: 28px;
   cursor: pointer;
-  color: inherit;
   z-index: 1000;
+  color: inherit;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px; /* colțuri mai ascuțite */
+  padding: 15px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  color: #f0f0f0;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.card-description {
+  flex-grow: 1;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.card-footer a {
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+}
+
+.card-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Tema luminoasă */
+body.light-mode .card {
+  background: #f9f9f9;
+  color: #222;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  backdrop-filter: none;
+}
+
+body.light-mode .card-footer a {
+  color: #0077cc;
 }

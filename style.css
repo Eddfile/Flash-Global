@@ -63,6 +63,36 @@ function renderCards(cards) {
     container.appendChild(cardEl);
   });
 }
+  .label-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  z-index: 10;
+}
+
+body.light-mode .label-tag {
+  background: rgba(255, 255, 255, 0.7);
+  color: #222;
+}
+
+.flag-icon {
+  width: 16px;
+  height: 12px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+.card {
+  position: relative;
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
   renderCards(cardsData);

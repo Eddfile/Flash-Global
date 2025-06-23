@@ -47,13 +47,13 @@ function renderCards(cards) {
   container.innerHTML = '';
 
   cards.forEach((card) => {
+    const buttonsHtml = card.sourceLinks.map(link => 
+      `<a href="${link}" target="_blank" rel="noopener noreferrer" class="source-button">Vezi sursa</a>`
+    ).join(' ');
+
     const cardEl = document.createElement('div');
     cardEl.className = 'card';
 
-    // Creează butoanele verzi pentru fiecare sursă
-    const buttonsHtml = card.sourceLinks.map(link => 
-  
-    ).join('');
     cardEl.innerHTML = `
       <div class="label-tag">
         <img src="${card.flagUrl}" alt="${card.tag} steag" />
@@ -67,8 +67,7 @@ function renderCards(cards) {
           ${buttonsHtml}
         </div>
       </div>
-      <div class="card-footer">
-      </div>
+      <div class="card-footer"></div>
     `;
 
     container.appendChild(cardEl);

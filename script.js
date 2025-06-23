@@ -46,34 +46,37 @@ function renderCards(cards) {
     const cardEl = document.createElement('div');
     cardEl.className = 'card';
 
-    cardEl.innerHTML = `
-      <div class="label-tag">
-        <img src="${card.flagUrl}" alt="${card.tag} steag" />
-        <span>${card.tag}</span>
-      </div>
-      <img src="${card.imageUrl}" alt="Imagine știre" class="card-image" />
-      <div class="card-content">
-        <h3 class="card-title">${card.title}</h3>
-        <p class="card-description">${card.description}</p>
-      </div>
-      <div class="card-interaction">
-        <div class="button-with-count">
-          <button class="like-btn" data-index="${idx}" aria-label="Like">
-            <i class="fa-regular fa-thumbs-up"></i>
-          </button>
-          <span class="like-count">${card.likes}</span>
-        </div>
-        <div class="button-with-count">
-          <button class="dislike-btn" data-index="${idx}" aria-label="Dislike">
-            <i class="fa-regular fa-thumbs-down"></i>
-          </button>
-          <span class="dislike-count">${card.dislikes}</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <a href="${card.sourceLink}" target="_blank" rel="noopener">Vezi sursa</a>
-      </div>
-    `;
+const userVotes = JSON.parse(localStorage.getItem('flashglobal_votes') || '{}');
+const vote = userVotes[idx]; // poate fi 'like', 'dislike' sau undefined
+
+cardEl.innerHTML = `
+  <div class="label-tag">
+    <img src="${card.flagUrl}" alt="${card.tag} steag" />
+    <span>${card.tag}</span>
+  </div>
+  <img src="${card.imageUrl}" alt="Imagine știre" class="card-image" />
+  <div class="card-content">
+    <h3 class="card-title">${card.title}</h3>
+    <p class="card-description">${card.description}</p>
+  </div>
+  <div class="card-interaction">
+    <div class="button-with-count">
+      <button class="like-btn" data-index="${idx}" aria-label="Like">
+        <i class="fas fa-thumbs-up ${vote === 'like' ? 'voted like-voted' : ''}"></i>
+      </button>
+      <span class="like-count">${card.likes}</span>
+    </div>
+    <div class="button-with-count">
+      <button class="dislike-btn" data-index="${idx}" aria-label="Dislike">
+        <i class="fas fa-thumbs-down ${vote === 'dislike' ? 'voted dislike-voted' : ''}"></i>
+      </button>
+      <span class="dislike-count">${card.dislikes}</span>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a href="${card.sourceLink}" target="_blank" rel="noopener">Vezi sursa</a>
+  </div>
+`;
 
     container.appendChild(cardEl);
   });

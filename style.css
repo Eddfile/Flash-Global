@@ -1,69 +1,116 @@
-const toggleBtn = document.getElementById('toggle-dark');
-
-// La încărcare, setăm tema după clasa body (default dark)
-function updateButton() {
-  if (document.body.classList.contains('light-mode')) {
-    toggleBtn.textContent = '🌙';  // lumina = lună icon
-  } else {
-    toggleBtn.textContent = '☀️';  // întuneric = soare icon
-  }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('light-mode');
-  updateButton();
-});
-
-// Setăm butonul la încărcare
-updateButton();
-
-const cardsData = [
-  {
-    title: "Accident rutier pe DN1",
-    description: "Coliziune între două autoturisme, se circulă cu dificultate.",
-    imageUrl: "https://example.com/image1.jpg",
-    sourceLink: "https://site-exemplu.ro/stire1",
-    tag: "Național",
-    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Romania.svg"
-  },
-  {
-    title: "Blocaj pe autostradă",
-    description: "Un tir a derapat, traficul este deviat.",
-    imageUrl: "https://example.com/image2.jpg",
-    sourceLink: "https://site-exemplu.ro/stire2",
-    tag: "Internațional",
-    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
-  }
-  // Adaugă știri noi aici cu tag și steag
-];
-
-function renderCards(cards) {
-  const container = document.getElementById('cardsList');
-  container.innerHTML = '';
-
-  cards.forEach(card => {
-    const cardEl = document.createElement('div');
-    cardEl.className = 'card';
-    cardEl.style.position = 'relative';  // pentru etichetă
-
-    cardEl.innerHTML = `
-      <div class="label-tag">
-        <img src="${card.flagUrl}" alt="${card.tag} steag" />
-        <span>${card.tag}</span>
-      </div>
-      <img src="${card.imageUrl}" alt="Imagine știre" class="card-image" />
-      <div class="card-content">
-        <h3 class="card-title">${card.title}</h3>
-        <p class="card-description">${card.description}</p>
-      </div>
-      <div class="card-footer">
-        <a href="${card.sourceLink}" target="_blank" rel="noopener noreferrer">Vezi sursa</a>
-      </div>
-    `;
-    container.appendChild(cardEl);
-  });
+body.light-mode {
+  background-color: #f4f4f4;
+  color: #222;
 }
-  .label-tag {
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+#toggle-dark {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  color: inherit;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.card-footer a {
+  color: #61dafb;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  font-weight: bold;
+}
+
+.card-footer a:hover {
+  text-decoration: underline;
+}
+
+body.light-mode .card {
+  background: #ffffff;
+  color: #222;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+body.light-mode .card-footer a {
+  color: #0077cc;
+}
+
+.label-tag {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -74,7 +121,7 @@ function renderCards(cards) {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   z-index: 10;
 }
 
@@ -89,11 +136,3 @@ body.light-mode .label-tag {
   object-fit: cover;
   border: 1px solid #ccc;
 }
-.card {
-  position: relative;
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderCards(cardsData);
-});

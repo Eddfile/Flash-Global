@@ -234,9 +234,11 @@ body.light-mode .card-description {
   margin-top: 10px;
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* forțăm să stea pe un rând */
   justify-content: flex-start;
+  overflow-x: auto; /* optional, dacă e prea îngust */
 }
+
 
 .card-source-buttons a {
   background-color: #4caf50; /* verde */

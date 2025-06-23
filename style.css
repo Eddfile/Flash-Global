@@ -228,3 +228,30 @@ body.light-mode .card-title,
 body.light-mode .card-description {
   color: #fff;
 }
+/* Restul codului CSS rămâne la fel ca înainte */
+
+.card-source-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.card-source-buttons a {
+  background-color: #4caf50; /* verde */
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-source-buttons a:hover {
+  background-color: #388e3c;
+}

@@ -23,9 +23,9 @@ const cardsData = [
     tag: "Național",
     flagUrl: "https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Romania.svg",
     sourceLinks: [
-      "https://stirileprotv.ro/stiri/actualitate/guvernul-bolojan-votat-parlament.html",
-      "https://news.example.com/source2",
-      "https://anothernews.example.com/source3"
+      "https://www.zf.ro/eveniment/este-oficial-ilie-bolojan-este-noul-premier-al-romaniei-cabinetul-22838870",
+      "https://www.digi24.ro/stiri/actualitate/politica/cine-este-ilie-bolojan-premierul-desemnat-de-nicusor-dan-pentru-a-forma-noul-guvern-3292845",
+      "https://stirileprotv.ro/stiri/politic/cine-este-ilie-bolojan-desemnat-de-nicusor-dan-pentru-functia-de-premier-al-romaniei.html"
     ]
   },
   {
@@ -37,7 +37,7 @@ const cardsData = [
     sourceLinks: [
       "https://www.thetimes.com/world/middle-east/israel-iran/article/evin-prison-iran-israel-war-us-latest-news-mhnbjpr70?region=global",
       "https://www.reuters.com/world/middle-east/israel-signals-iran-campaign-can-end-soon-much-hinges-tehran-2025-06-23/",
-      "https://stirileprotv.ro/stiri/international/iranul-si-israelul-lanseaza-noi-atacuri-dupa-ce-teheranul-a-exclus-negocierile-pe-subiectul-nuclear.html"
+      "https://www.digi24.ro/stiri/externe/mapamond/tara-in-care-se-afla-cea-mai-mare-baza-americana-din-orientul-mijlociu-isi-inchide-spatiul-aerian-sua-noi-recomandari-pentru-cetateni-3296773"
     ]
   }
 ];
@@ -52,9 +52,8 @@ function renderCards(cards) {
 
     // Creează butoanele verzi pentru fiecare sursă
     const buttonsHtml = card.sourceLinks.map(link => 
-      `<a href="${link}" target="_blank" rel="noopener noreferrer">Vezi sursa</a>`
+  
     ).join('');
-
     cardEl.innerHTML = `
       <div class="label-tag">
         <img src="${card.flagUrl}" alt="${card.tag} steag" />
@@ -69,7 +68,6 @@ function renderCards(cards) {
         </div>
       </div>
       <div class="card-footer">
-        <a href="${card.sourceLinks[0]}" target="_blank" rel="noopener noreferrer">Vezi sursa</a>
       </div>
     `;
 

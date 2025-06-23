@@ -2,20 +2,22 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Flash Global</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
   <button id="toggle-dark">☀️</button>
 
-  <h1>Flash Global</h1>
-  <p>Știri de ultimă oră din întreaga lume și România</p>
+  <header>
+    <h1>Flash Global</h1>
+    <p class="subtitle">Știri de ultimă oră – Naționale și Internaționale</p>
+  </header>
 
   <div class="container">
-    <div class="cards-list" id="cardsList"></div>
+    <div id="cardsList" class="cards-list"></div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

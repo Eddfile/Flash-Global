@@ -26,6 +26,45 @@ body.light-mode .container {
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   transition: background 0.3s;
 }
+.cards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.card-title {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.card-description {
+  flex-grow: 1;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+s
 
 h1 {
   font-size: 1.6em;

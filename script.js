@@ -19,7 +19,7 @@ const cardsData = [
   {
     title: "Bolojan Premier",
     description: "Guvernul Bolojan a fost votat în Parlament. Noul executiv a trecut cu 301 voturi în favoarea sa și 9 voturi „împotrivă”. Liderii partidelor care îl susțin au semnat de dimineață protocolul coaliției de guvernare.",
-    imageUrl: "https://image.stirileprotv.ro/media/images/800x450/Jun2025/41145478.jpg",
+    imageUrl: "https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZTA4dHJhbnNjb2Rlci5yY3Mt/cmRzLnJvJTJGc3RvcmFnZSUyRjIwMjUl/MkYwMiUyRjExJTJGMjE4NzQ4MV8yMTg3/NDgxX0lsaWUtQm9sb2phbi1JTl9JRDI5/MDcwN19JTlFVQU1fUGhvdG9zX09jdGF2/X0dhbmVhLmpwZyZ3PTc4MCZoPTQ0MCZo/YXNoPWI4ZWVjZWJhYmY5ODFmMWEwNzU2MGY0NWY2Mjc1ZGIw.thumb.jpg",
     tag: "Național",
     flagUrl: "https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Romania.svg",
     sourceLinks: [
@@ -30,8 +30,7 @@ const cardsData = [
   },
   {
     title: "Conflictul Israel-Iran explodează: Viitorul Orientului Mijlociu în pericol!",
-    description: "În ultimele zile, Statele Unite au lansat atacuri militare asupra a trei situri nucleare iraniene, vizând oprirea programului nuclear al Iranului. Israel a susținut aceste operațiuni prin atacuri aeriene țintite, crescând tensiunile regionale. Rusia a avertizat asupra riscului unui conflict extins, iar Iranul a promis represalii dure.
-",
+    description: "În ultimele zile, Statele Unite au lansat atacuri militare asupra a trei situri nucleare iraniene, vizând oprirea programului nuclear al Iranului. Israel a susținut aceste operațiuni prin atacuri aeriene țintite, crescând tensiunile regionale. Rusia a avertizat asupra riscului unui conflict extins, iar Iranul a promis represalii dure.",
     imageUrl: "https://i.ytimg.com/vi/Hwy9PXsJnjE/hqdefault.jpg",
     tag: "Internațional",
     flagUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Israel.svg",

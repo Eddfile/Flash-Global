@@ -1,7 +1,6 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  /* PASUL 1: Setăm culorile de pornire direct pe închis (Dark Mode) */
   background: #222;
   color: #ddd;
   transition: background 0.3s, color 0.3s;
@@ -14,7 +13,6 @@ header {
 
 .subtitle {
   font-size: 1.1rem;
-  /* PASUL 2: Culoare deschisă pentru subtitlu în Dark Mode */
   color: #aaa;
 }
 
@@ -29,10 +27,10 @@ header {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .card {
-  /* PASUL 3: Cardurile pornesc pe fundal închis */
   background: #333;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(255,255,255,0.08);
@@ -62,14 +60,13 @@ header {
 .card-title {
   margin: 0 0 8px 0;
   font-size: 1.2rem;
-  /* PASUL 4: Titlul și descrierea din card pornesc albe */
   color: #fff;
 }
 
 .card-description {
   font-size: 0.95rem;
   line-height: 1.4;
-  color: #fff;
+  color: #eee;
 }
 
 .card-footer {
@@ -78,21 +75,11 @@ header {
   text-align: right;
 }
 
-.card-footer a {
-  text-decoration: none;
-  color: #007BFF;
-}
-
-.card-footer a:hover {
-  text-decoration: underline;
-}
-
 /* Tag + steag */
 .label-tag {
   position: absolute;
   top: 15px;
   left: 15px;
-  /* PASUL 5: Fundalul tag-ului pornește în varianta dark */
   background: rgba(255,255,255,0.2);
   color: #ddd;
   padding: 5px 9px;
@@ -112,59 +99,14 @@ header {
   border: 1px solid #ccc;
 }
 
-/* Butoane like / dislike sub card */
-.card-interaction {
-  margin-top: 12px;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.button-with-count {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.button-with-count button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 1.3rem;
-  color: #aaa; /* Culoare mai deschisă pentru butoane în Dark Mode */
-  transition: color 0.2s ease;
-}
-
-.like-voted {
-  color: #4caf50; /* verde */
-}
-
-.dislike-voted {
-  color: #f44336; /* roșu */
-}
-
-.button-with-count span {
-  font-size: 1rem;
-  color: #ddd; /* Textul numărătorului pornește deschis */
-}
-
-.voted {
-  animation: bounce 0.3s;
-}
-
-@keyframes bounce {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.3); }
-  100% { transform: scale(1); }
-}
-
 footer {
-  background: #111; /* Un pic mai închis pentru footer în Dark Mode */
+  background: #111;
   color: #ddd;
   padding: 25px 15px;
   font-size: 0.9rem;
   text-align: center;
   transition: background 0.3s, color 0.3s;
+  margin-top: 40px;
 }
 
 footer a {
@@ -177,25 +119,7 @@ footer a:hover {
   text-decoration: underline;
 }
 
-.paypal-button {
-  margin-top: 10px;
-  background-color: #003087;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 18px;
-  font-size: 1rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.paypal-button i {
-  font-size: 1.3rem;
-}
-
-/* Buton toggle dark mode - fixat în dreapta sus */
+/* Buton toggle dark mode fixat */
 #toggle-dark {
   position: fixed;
   top: 15px;
@@ -204,44 +128,40 @@ footer a:hover {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #ddd; /* Pornire pe alb/gri pentru vizibilitate */
+  color: #ddd;
   transition: color 0.3s;
   z-index: 1000;
 }
 
 .card-source-buttons {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   gap: 10px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: flex-start;
-  overflow-x: auto;
 }
 
-.card-source-buttons a {
+/* REPARAȚIE: Stilul exact pentru clasa generată de JS */
+.source-button {
   background-color: #4caf50;
-  color: white;
+  color: white !important;
   padding: 6px 14px;
   border-radius: 20px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   transition: background-color 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
 }
 
-.card-source-buttons a:hover {
+.source-button:hover {
   background-color: #388e3c;
 }
 
-
-/* ==========================================================================
-   STILURI PENTRU MODUL LUMINOS (Light Mode) 
-   Se activează doar când scriptul JS adaugă clasa .light-mode pe <body>
-   ========================================================================== */
-
+/* ==========================================
+   MODUL LUMINOS (Light Mode) 
+   ========================================== */
 body.light-mode {
   background: #f5f5f5;
   color: #222;
@@ -270,18 +190,14 @@ body.light-mode .label-tag {
 }
 
 body.light-mode footer {
-  background: #222;
-  color: #ddd;
+  background: #e0e0e0;
+  color: #333;
+}
+
+body.light-mode footer a {
+  color: #222;
 }
 
 body.light-mode #toggle-dark {
   color: #222;
-}
-
-body.light-mode .button-with-count button {
-  color: #666;
-}
-
-body.light-mode .button-with-count span {
-  color: #444;
 }

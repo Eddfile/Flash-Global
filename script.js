@@ -1,19 +1,34 @@
+// Culorile și tema de pornire (Dark Mode implicit)
 const toggleBtn = document.getElementById('toggle-dark');
 
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  
-  // Dacă body are clasa dark-mode, pune textul soare, altfel pune lună
-  if (document.body.classList.contains('dark-mode')) {
-    toggleBtn.textContent = '☀️';
-  } else {
-    toggleBtn.textContent = '🌙';
-  }
-});
+// Verificăm dacă utilizatorul are deja o preferință salvată în browser, altfel pornește pe dark
+const currentTheme = localStorage.getItem('theme') || 'dark';
 
+if (currentTheme === 'light') {
+  document.body.classList.add('light-mode');
+  if (toggleBtn) toggleBtn.textContent = '🌙';
+} else {
+  document.body.classList.remove('light-mode');
+  if (toggleBtn) toggleBtn.textContent = '☀️';
+}
 
-updateButton();
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    
+    let theme = 'dark';
+    if (document.body.classList.contains('light-mode')) {
+      theme = 'light';
+      toggleBtn.textContent = '🌙'; // Arată luna când treci pe modul luminos
+    } else {
+      toggleBtn.textContent = '☀️'; // Arată soarele când treci pe modul întunecat
+    }
+    
+    localStorage.setItem('theme', theme);
+  });
+}
 
+// Datele știrilor tale (Păstrate intacte)
 const cardsData = [
   {
     title: "Bolojan Premier",
@@ -41,8 +56,11 @@ const cardsData = [
   }
 ];
 
+// Funcția de randare a cardurilor (Corectată pentru noile stiluri)
 function renderCards(cards) {
   const container = document.getElementById('cardsList');
+  if (!container) return; // Protecție în caz că rulăm pe pagini fără listă (ex: terms.html)
+  
   container.innerHTML = '';
 
   cards.forEach((card) => {
@@ -73,4 +91,5 @@ function renderCards(cards) {
   });
 }
 
+// Rulăm generarea cardurilor pe ecran
 renderCards(cardsData);

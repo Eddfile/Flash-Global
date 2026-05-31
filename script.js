@@ -1,17 +1,16 @@
 const toggleBtn = document.getElementById('toggle-dark');
 
-function updateButton() {
-  if (document.body.classList.contains('light-mode')) {
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  
+  // Dacă body are clasa dark-mode, pune textul soare, altfel pune lună
+  if (document.body.classList.contains('dark-mode')) {
     toggleBtn.textContent = '☀️';
   } else {
     toggleBtn.textContent = '🌙';
   }
-}
-
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('light-mode');
-  updateButton();
 });
+
 
 updateButton();
 

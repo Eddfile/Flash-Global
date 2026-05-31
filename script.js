@@ -29,30 +29,31 @@ if (toggleBtn) {
 // Datele știrilor tale
 const cardsData = [
   {
-    title: "Bolojan Premier",
-    description: "Cabinetul Bolojan este susținut de o coaliție formată din PSD, PNL, USR, UDMR și Grupul Parlamentar al Minorităților Naționale. Acesta include 16 miniștri, dintre care 5 sunt vicepremieri. Printre principalele obiective ale guvernului se numără implementarea unor reforme structurale, consolidarea democrației și dezvoltarea economică a României",
-    imageUrl: "https://iw.ro",
+    title: "O dronă rusească plină cu explozibil a lovit un bloc din Galați",
+    description: "În miez de noapte, o dronă kamikaze rusească încărcată cu 30 kg de explozibil s-a prăbușit pe un bloc de 10 etaje. Deflagrația puternică a rănit doi oameni și a distrus acoperișul clădirii, forțând evacuarea a 70 de locatari. Ca replică directă, România l-a dat afară din țară pe consulul Rusiei și i-a închis consulatul.",
+    imageUrl: "https://cdn.adh.reperio.news/image-7/75cb247f-6bf8-4925-8478-57cbd46884bb/index.jpeg?p=a%3D1%26co%3D1.05%26w%3D1400%26h%3D750%26r%3Dcontain%26f%3Dwebp",
     tag: "Național",
-    flagUrl: "https://wikimedia.org",
+    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Flag_of_Romania_%28Moldovan_flag_colors%29.png/330px-Flag_of_Romania_%28Moldovan_flag_colors%29.png",
     sourceLinks: [
-      "https://zf.ro",
-      "https://digi24.ro",
-      "https://stirileprotv.ro"
+      "https://agerpres.ro/social/2026/05/31/mapn-drona-de-la-galati---tip-kamikaze-cu-localizare-a-sistemelor-satelitare-cu-30-kg-de-munitie--1561810",
+      "https://www.libertatea.ro/stiri/stiri-galati-drona-ruseasca-prabusita-galati-explozie-incendiu-bloc-zece-etaje-persoane-ranite-5757441",
+      "https://stirileprotv.ro/stiri/actualitate/o-drona-cu-incarcatura-exploziva-s-a-prabusit-pe-un-bloc-din-galati-70-de-persoane-au-fost-evacuate.html"
     ]
   },
   {
-    title: "Conflictul Israel-Iran explodează: Viitorul Orientului Mijlociu în pericol!",
-    description: "În ultimele zile, Statele Unite au lansat atacuri militare asupra a trei situri nucleare iraniene, vizând oprirea programului nuclear al Iranului. Israel a susținut aceste operațiuni prin atacuri aeriene țintite, crescând tensiunile regionale. Rusia a avertizat asupra riscului unui conflict extins, iar Iranul a promis represalii dure.",
-    imageUrl: "https://ytimg.com",
+    title: "SUA și Iranul, la un pas de război total pentru petrol în Strâmtoarea Hormuz",
+    description: "Tensiunile au explodat după ce trupele americane au scufundat șapte bărci militare iraniene care atacau vapoarele comerciale. Donald Trump a amenințat Teheranul cu distrugerea totală dacă agresiunile continuă. În prezent, atacurile au fost înghețate, iar ambele părți au început negocieri secrete de pace pentru a evita un război mondial.",
+    imageUrl: "https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZTA4dHJhbnNjb2Rlci5yY3Mt/cmRzLnJvJTJGc3RvcmFnZSUyRjIwMjYl/MkYwMyUyRjAzJTJGMjYxNzEyNF8yNjE3/MTI0X0dldHR5SW1hZ2VzLTExOTg4NDE4/ODguanBnJnc9NzgwJmg9NDQwJmhhc2g9/YzViMjJlZDRhODkyMzlkNjJiNjRmYTBhODBkNjlkOTY=.thumb.jpg",
     tag: "Internațional",
-    flagUrl: "https://wikimedia.org",
+    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/330px-Flag_of_Europe.svg.png",
     sourceLinks: [
-      "https://thetimes.com",
-      "https://reuters.com",
-      "https://digi24.ro"
+      "https://en.wikipedia.org/wiki/2026_Iran_war",
+      "https://www.aljazeera.com/tag/israel-iran-conflict/",
+      "https://www.reuters.com/world/iran/"
     ]
   }
 ];
+
 
 // Funcția de afișare
 function renderCards(cards) {

@@ -1,8 +1,9 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: #f5f5f5;
-  color: #222;
+  /* PASUL 1: Setăm culorile de pornire direct pe închis (Dark Mode) */
+  background: #222;
+  color: #ddd;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -13,7 +14,8 @@ header {
 
 .subtitle {
   font-size: 1.1rem;
-  color: #555;
+  /* PASUL 2: Culoare deschisă pentru subtitlu în Dark Mode */
+  color: #aaa;
 }
 
 .container {
@@ -30,9 +32,10 @@ header {
 }
 
 .card {
-  background: #fff;
+  /* PASUL 3: Cardurile pornesc pe fundal închis */
+  background: #333;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(255,255,255,0.08);
   width: 320px;
   display: flex;
   flex-direction: column;
@@ -59,13 +62,14 @@ header {
 .card-title {
   margin: 0 0 8px 0;
   font-size: 1.2rem;
-  color: #111;
+  /* PASUL 4: Titlul și descrierea din card pornesc albe */
+  color: #fff;
 }
 
 .card-description {
   font-size: 0.95rem;
   line-height: 1.4;
-  color: #444;
+  color: #fff;
 }
 
 .card-footer {
@@ -88,8 +92,9 @@ header {
   position: absolute;
   top: 15px;
   left: 15px;
-  background: rgba(0,0,0,0.6);
-  color: white;
+  /* PASUL 5: Fundalul tag-ului pornește în varianta dark */
+  background: rgba(255,255,255,0.2);
+  color: #ddd;
   padding: 5px 9px;
   border-radius: 6px;
   font-size: 0.8rem;
@@ -126,7 +131,7 @@ header {
   background: none;
   cursor: pointer;
   font-size: 1.3rem;
-  color: #666;
+  color: #aaa; /* Culoare mai deschisă pentru butoane în Dark Mode */
   transition: color 0.2s ease;
 }
 
@@ -140,7 +145,7 @@ header {
 
 .button-with-count span {
   font-size: 1rem;
-  color: #444;
+  color: #ddd; /* Textul numărătorului pornește deschis */
 }
 
 .voted {
@@ -153,24 +158,8 @@ header {
   100% { transform: scale(1); }
 }
 
-/* Dark mode */
-body.light-mode {
-  background: #222;
-  color: #ddd;
-}
-
-body.light-mode .card {
-  background: #333;
-  box-shadow: 0 2px 6px rgba(255,255,255,0.08);
-}
-
-body.light-mode .label-tag {
-  background: rgba(255,255,255,0.2);
-  color: #ddd;
-}
-
 footer {
-  background: #222;
+  background: #111; /* Un pic mai închis pentru footer în Dark Mode */
   color: #ddd;
   padding: 25px 15px;
   font-size: 0.9rem;
@@ -215,33 +204,22 @@ footer a:hover {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #222;
+  color: #ddd; /* Pornire pe alb/gri pentru vizibilitate */
   transition: color 0.3s;
   z-index: 1000;
 }
-
-body.light-mode #toggle-dark {
-  color: #ddd;
-}
-body.light-mode .card-content,
-body.light-mode .card-title,
-body.light-mode .card-description {
-  color: #fff;
-}
-/* Restul codului CSS rămâne la fel ca înainte */
 
 .card-source-buttons {
   margin-top: 10px;
   display: flex;
   gap: 10px;
-  flex-wrap: nowrap; /* forțăm să stea pe un rând */
+  flex-wrap: nowrap;
   justify-content: flex-start;
-  overflow-x: auto; /* optional, dacă e prea îngust */
+  overflow-x: auto;
 }
 
-
 .card-source-buttons a {
-  background-color: #4caf50; /* verde */
+  background-color: #4caf50;
   color: white;
   padding: 6px 14px;
   border-radius: 20px;
@@ -256,4 +234,54 @@ body.light-mode .card-description {
 
 .card-source-buttons a:hover {
   background-color: #388e3c;
+}
+
+
+/* ==========================================================================
+   STILURI PENTRU MODUL LUMINOS (Light Mode) 
+   Se activează doar când scriptul JS adaugă clasa .light-mode pe <body>
+   ========================================================================== */
+
+body.light-mode {
+  background: #f5f5f5;
+  color: #222;
+}
+
+body.light-mode .subtitle {
+  color: #555;
+}
+
+body.light-mode .card {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+body.light-mode .card-title {
+  color: #111;
+}
+
+body.light-mode .card-description {
+  color: #444;
+}
+
+body.light-mode .label-tag {
+  background: rgba(0,0,0,0.6);
+  color: white;
+}
+
+body.light-mode footer {
+  background: #222;
+  color: #ddd;
+}
+
+body.light-mode #toggle-dark {
+  color: #222;
+}
+
+body.light-mode .button-with-count button {
+  color: #666;
+}
+
+body.light-mode .button-with-count span {
+  color: #444;
 }

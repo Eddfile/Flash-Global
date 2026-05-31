@@ -1,7 +1,5 @@
 // Culorile și tema de pornire (Dark Mode implicit)
 const toggleBtn = document.getElementById('toggle-dark');
-
-// Verificăm dacă utilizatorul are deja o preferință salvată în browser, altfel pornește pe dark
 const currentTheme = localStorage.getItem('theme') || 'dark';
 
 if (currentTheme === 'light') {
@@ -19,47 +17,47 @@ if (toggleBtn) {
     let theme = 'dark';
     if (document.body.classList.contains('light-mode')) {
       theme = 'light';
-      toggleBtn.textContent = '🌙'; // Arată luna când treci pe modul luminos
+      toggleBtn.textContent = '🌙';
     } else {
-      toggleBtn.textContent = '☀️'; // Arată soarele când treci pe modul întunecat
+      toggleBtn.textContent = '☀️';
     }
     
     localStorage.setItem('theme', theme);
   });
 }
 
-// Datele știrilor tale (Păstrate intacte)
+// Datele știrilor tale
 const cardsData = [
   {
     title: "Bolojan Premier",
     description: "Cabinetul Bolojan este susținut de o coaliție formată din PSD, PNL, USR, UDMR și Grupul Parlamentar al Minorităților Naționale. Acesta include 16 miniștri, dintre care 5 sunt vicepremieri. Printre principalele obiective ale guvernului se numără implementarea unor reforme structurale, consolidarea democrației și dezvoltarea economică a României",
-    imageUrl: "https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZTA4dHJhbnNjb2Rlci5yY3Mt/cmRzLnJvJTJGc3RvcmFnZSUyRjIwMjUl/MkYwMiUyRjExJTJGMjE4NzQ4MV8yMTg3/NDgxX0lsaWUtQm9sb2phbi1JTl9JRDI5/MDcwN19JTlFVQU1fUGhvdG9zX09jdGF2/X0dhbmVhLmpwZyZ3PTc4MCZoPTQ0MCZo/YXNoPWI4ZWVjZWJhYmY5ODFmMWEwNzU2MGY0NWY2Mjc1ZGIw.thumb.jpg",
+    imageUrl: "https://iw.ro",
     tag: "Național",
-    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Romania.svg",
+    flagUrl: "https://wikimedia.org",
     sourceLinks: [
-      "https://www.zf.ro/eveniment/este-oficial-ilie-bolojan-este-noul-premier-al-romaniei-cabinetul-22838870",
-      "https://www.digi24.ro/stiri/actualitate/politica/cine-este-ilie-bolojan-premierul-desemnat-de-nicusor-dan-pentru-a-forma-noul-guvern-3292845",
-      "https://stirileprotv.ro/stiri/politic/cine-este-ilie-bolojan-desemnat-de-nicusor-dan-pentru-functia-de-premier-al-romaniei.html"
+      "https://zf.ro",
+      "https://digi24.ro",
+      "https://stirileprotv.ro"
     ]
   },
   {
     title: "Conflictul Israel-Iran explodează: Viitorul Orientului Mijlociu în pericol!",
     description: "În ultimele zile, Statele Unite au lansat atacuri militare asupra a trei situri nucleare iraniene, vizând oprirea programului nuclear al Iranului. Israel a susținut aceste operațiuni prin atacuri aeriene țintite, crescând tensiunile regionale. Rusia a avertizat asupra riscului unui conflict extins, iar Iranul a promis represalii dure.",
-    imageUrl: "https://i.ytimg.com/vi/Hwy9PXsJnjE/hqdefault.jpg",
+    imageUrl: "https://ytimg.com",
     tag: "Internațional",
-    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/330px-Flag_of_Europe.svg.png",
+    flagUrl: "https://wikimedia.org",
     sourceLinks: [
-      "https://www.thetimes.com/world/middle-east/israel-iran/article/evin-prison-iran-israel-war-us-latest-news-mhnbjpr70?region=global",
-      "https://www.reuters.com/world/middle-east/israel-signals-iran-campaign-can-end-soon-much-hinges-tehran-2025-06-23/",
-      "https://www.digi24.ro/stiri/externe/mapamond/tara-in-care-se-afla-cea-mai-mare-baza-americana-din-orientul-mijlociu-isi-inchide-spatiul-aerian-sua-noi-recomandari-pentru-cetateni-3296773"
+      "https://thetimes.com",
+      "https://reuters.com",
+      "https://digi24.ro"
     ]
   }
 ];
 
-// Funcția de randare a cardurilor (Corectată pentru noile stiluri)
+// Funcția de afișare
 function renderCards(cards) {
   const container = document.getElementById('cardsList');
-  if (!container) return; // Protecție în caz că rulăm pe pagini fără listă (ex: terms.html)
+  if (!container) return; // Oprește funcția dacă elementul nu există pe pagina curentă
   
   container.innerHTML = '';
 
@@ -91,5 +89,5 @@ function renderCards(cards) {
   });
 }
 
-// Rulăm generarea cardurilor pe ecran
+// Rulăm generarea
 renderCards(cardsData);

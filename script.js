@@ -37,7 +37,7 @@ const cardsData = [
     sourceLinks: [
       "https://agerpres.ro/social/2026/05/31/mapn-drona-de-la-galati---tip-kamikaze-cu-localizare-a-sistemelor-satelitare-cu-30-kg-de-munitie--1561810",
       "https://www.libertatea.ro/stiri/stiri-galati-drona-ruseasca-prabusita-galati-explozie-incendiu-bloc-zece-etaje-persoane-ranite-5757441",
-      "https://stirileprotv.ro/stiri/actualitate/o-drona-cu-incarcatura-exploziva-s-a-prabusit-pe-un-bloc-din-galati-70-de-persoane-au-fost-evacuate.html"
+      "https://stirileprotv.ro/stiri/actualitate/o-drona-cu-incarcatura-exploziva-s-a-prabusit-pe-un-bloc-din-galati-70-de-persoane-au-fost-evacuate.html",
       "https://www.reuters.com/world/reactions-drone-incident-romania-2026-05-29/"
       
     ]
@@ -51,7 +51,7 @@ const cardsData = [
     sourceLinks: [
       "https://en.wikipedia.org/wiki/2026_Iran_war",
       "https://www.aljazeera.com/tag/israel-iran-conflict/",
-      "https://www.reuters.com/world/iran/"
+      "https://www.reuters.com/world/iran/",
       "https://www.digi24.ro/stiri/externe/sua/trump-trimite-iranului-conditii-mai-dure-pentru-un-acord-de-pace-ce-nemultumiri-are-presedintele-american-3793867/"
   
     ]
